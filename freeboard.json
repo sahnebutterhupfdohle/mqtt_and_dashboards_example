@@ -1,0 +1,109 @@
+{
+	"version": 1,
+	"allow_edit": true,
+	"plugins": [],
+	"panes": [
+		{
+			"title": "Position",
+			"width": 1,
+			"row": {
+				"3": 1
+			},
+			"col": {
+				"3": 3
+			},
+			"col_width": 1,
+			"widgets": [
+				{
+					"type": "google_map",
+					"settings": {
+						"lat": "datasources[\"Tram\"][\"msg\"][\"VP\"][\"lat\"]",
+						"lon": "datasources[\"Tram\"][\"msg\"][\"VP\"][\"long\"]"
+					}
+				}
+			]
+		},
+		{
+			"title": "Linie",
+			"width": 1,
+			"row": {
+				"3": 5
+			},
+			"col": {
+				"3": 1
+			},
+			"col_width": 1,
+			"widgets": [
+				{
+					"type": "text_widget",
+					"settings": {
+						"size": "regular",
+						"value": "datasources[\"Tram\"][\"msg\"][\"VP\"][\"desi\"]",
+						"animate": true
+					}
+				}
+			]
+		},
+		{
+			"title": "Geschwindigkeit",
+			"width": 1,
+			"row": {
+				"3": 1
+			},
+			"col": {
+				"3": 2
+			},
+			"col_width": 1,
+			"widgets": [
+				{
+					"type": "gauge",
+					"settings": {
+						"value": "datasources[\"Tram\"][\"msg\"][\"VP\"][\"spd\"] * 3.6",
+						"units": "km/h",
+						"min_value": 0,
+						"max_value": "130"
+					}
+				}
+			]
+		},
+		{
+			"title": "Verspätung",
+			"width": 1,
+			"row": {
+				"3": 1
+			},
+			"col": {
+				"3": 1
+			},
+			"col_width": 1,
+			"widgets": [
+				{
+					"type": "text_widget",
+					"settings": {
+						"size": "regular",
+						"value": "datasources[\"Tram\"][\"msg\"][\"VP\"][\"dl\"]",
+						"animate": true,
+						"units": "Sekunden"
+					}
+				}
+			]
+		}
+	],
+	"datasources": [
+		{
+			"name": "Tram",
+			"type": "paho_mqtt",
+			"settings": {
+				"server": "mqtt.hsl.fi",
+				"port": 1883,
+				"use_ssl": false,
+				"client_id": "Client_134312",
+				"username": "",
+				"password": "",
+				"topic": "/hfp/journey/tram/RHKL00205/#",
+				"json_data": true
+			}
+		}
+	],
+	"columns": 3
+}
